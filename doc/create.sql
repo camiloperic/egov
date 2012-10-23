@@ -1,0 +1,8 @@
+CREATE TABLE citizen (
+	id SERIAL PRIMARY KEY,
+	te VARCHAR(20) UNIQUE,
+	name VARCHAR(120),
+	email VARCHAR(50),
+	active INTEGER,
+	passwd VARCHAR(32)
+);

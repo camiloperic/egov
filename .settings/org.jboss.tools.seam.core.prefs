@@ -1,0 +1,16 @@
+action.package=org.egov.action
+action.sources=/eGov/src/hot
+eclipse.preferences.version=1
+model.package=org.egov.model
+model.sources=/eGov/src/main
+seam.ejb.project=eGov
+seam.project.connection.profile=
+seam.project.deployment.type=ear
+seam.project.settings.version=1.1
+seam.project.web.root.folder=/eGov/view
+seam.runtime.name=lib
+seam.settings.changed.by.user=true
+seam.test.creating=true
+seam.test.project=eGov
+test.package=org.egov.test
+test.sources=/eGov/src/test

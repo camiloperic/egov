@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<page xmlns="http://jboss.org/schema/seam/pages"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://jboss.org/schema/seam/pages http://jboss.org/schema/seam/pages-2.3.xsd"
+      no-conversation-view-id="/CitizenList.xhtml"
+      login-required="true">
+
+   <begin-conversation join="true" flush-mode="MANUAL"/>
+
+   <action execute="#{citizenHome.wire}"/>
+
+   <param name="citizenFrom"/>
+   <param name="citizenId" value="#{citizenHome.citizenId}"/>
+
+
+   <navigation from-action="#{citizenHome.persist}">
+      <rule if-outcome="persisted">
+         <end-conversation/>
+         <redirect view-id="/Citizen.xhtml"/>
+      </rule>
+   </navigation>
+
+   <navigation from-action="#{citizenHome.update}">
+      <rule if-outcome="updated">
+         <end-conversation/>
+         <redirect view-id="/Citizen.xhtml"/>
+      </rule>
+   </navigation>
+
+   <navigation from-action="#{citizenHome.remove}">
+      <rule if-outcome="removed">
+         <end-conversation/>
+         <redirect view-id="/CitizenList.xhtml"/>
+      </rule>
+   </navigation>
+
+</page>

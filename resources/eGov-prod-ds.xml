@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<datasources xmlns="http://www.jboss.org/ironjacamar/schema">
+    <datasource 
+        jndi-name="eGovDatasource"
+        enabled="true" 
+        use-java-context="true" pool-name="eGovDatasource_pool">
+        <connection-url>jdbc:postgresql://localhost/egov</connection-url>
+        <driver>postgresql-9.1-903.jdbc4.jar</driver>
+        <security>
+		      <user-name>egov</user-name>
+		      <password>egov</password>
+        </security>
+    </datasource>
+</datasources>
