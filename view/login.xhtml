@@ -6,38 +6,59 @@
     xmlns:f="http://java.sun.com/jsf/core"
     xmlns:h="http://java.sun.com/jsf/html"
     xmlns:rich="http://richfaces.org/rich"
+    xmlns:a4j="http://richfaces.org/a4j"
     template="layout/template.xhtml">
 
 <ui:define name="body">
 
-    <h:form id="loginForm">
-
-        <rich:panel>
-            <f:facet name="header">Login</f:facet>
-
-            <p>Please login here</p>
-
-            <div class="dialog">
+<rich:accordion switchType="client">
+          <rich:accordionItem header="Login">
+	    <h:form id="loginForm">
+			<center>
                 <h:panelGrid columns="2" rowClasses="prop" columnClasses="name,value">
-                    <h:outputLabel for="username">Título Eleitoral</h:outputLabel>
-                    <h:inputText id="username"
+                    <h:outputLabel for="log_username">Nome de usuário</h:outputLabel>
+                    <h:inputText id="log_username"
                               value="#{credentials.username}"/>
-                    <h:outputLabel for="password">Password</h:outputLabel>
-                    <h:inputSecret id="password"
+                    <h:outputLabel for="log_password">Senha</h:outputLabel>
+                    <h:inputSecret id="log_password"
                                 value="#{credentials.password}"/>
-                    <h:outputLabel for="rememberMe">Remember me</h:outputLabel>
-                    <h:selectBooleanCheckbox id="rememberMe"
+                    <h:outputLabel for="log_rememberMe">Lembrar</h:outputLabel>
+                    <h:selectBooleanCheckbox id="log_rememberMe"
                                           value="#{rememberMe.enabled}"/>
-                </h:panelGrid>
-            </div>
-
-        </rich:panel>
-
-        <div class="actionButtons">
-            <h:commandButton id="submit" value="Login" action="#{identity.login}"/>
-        </div>
-
-    </h:form>
-
- </ui:define>
+               	</h:panelGrid>
+				<h:commandButton id="log_submit" value="Login" action="#{identity.login}"/>
+			</center>
+		</h:form>
+          </rich:accordionItem>
+          <rich:accordionItem header="Cadastre-se">
+	    <h:form id="registerForm">
+			<center>
+				<h:panelGrid columns="2" rowClasses="prop" columnClasses="name,value">
+					<rich:validator event="change">
+	                	<h:outputLabel for="reg_username">Nome de usuário:</h:outputLabel>
+	                    <h:inputText id="reg_username"
+	                              value="#{credentials.username}">
+	                    	<f:validateLength minimum="8" maximum="32" />
+	                    </h:inputText>
+	                    <h:outputLabel for="reg_email">Email:</h:outputLabel>
+	                    <h:inputText id="reg_email"
+	                              value="#{credentials.username}"/>
+	                    <h:outputLabel for="reg_password">Password</h:outputLabel>
+	                    <h:inputSecret id="reg_password"
+	                                value="#{credentials.password}">
+							<f:validateLength minimum="8" maximum="32" />
+						</h:inputSecret>
+	                    <h:outputLabel for="reg_password_conf">Re-insert password</h:outputLabel>
+	                    <h:inputSecret id="reg_password_conf"
+	                                value="#{credentials.password}"/>
+					</rich:validator>
+					<rich:notifyMessages stayTime="10000" nonblocking="true" />
+				</h:panelGrid>
+				<h:commandButton id="reg_submit" value="Cadastrar" action="#{identity.login}"/>
+			</center>
+           </h:form>
+          </rich:accordionItem>
+      </rich:accordion>
+      
+</ui:define>
 </ui:composition>

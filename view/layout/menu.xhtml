@@ -1,4 +1,5 @@
-<rich:toolbar 
+<rich:toolbar
+	height="25"
     xmlns="http://www.w3.org/1999/xhtml"
     xmlns:ui="http://java.sun.com/jsf/facelets"
     xmlns:h="http://java.sun.com/jsf/html"
@@ -8,7 +9,6 @@
     <rich:toolbarGroup>
         <s:link id="menuHomeId" view="/home.xhtml" value="#{projectName}" propagation="none"/>
     </rich:toolbarGroup>
-    <!-- @newMenuItem@ -->
     <rich:toolbarGroup location="right">
         <h:outputText id="menuWelcomeId" value="signed in as: #{credentials.username}" rendered="#{identity.loggedIn}"/>
         <s:link id="menuLoginId" view="/login.xhtml" value="Login" rendered="#{not identity.loggedIn}" propagation="none"/>
